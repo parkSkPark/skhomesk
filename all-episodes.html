@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>하몬서클 성공스토리 - 모든 에피소드</title>
+  <meta name="description" content="하몬서클 기반 창업·직장·인생 성공 스토리텔링 유튜브 채널의 모든 에피소드" />
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- 커스텀 스타일 -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    .list-group-item {
+      cursor: pointer;
+    }
+    .list-group-item:hover {
+      background-color: #f8f9fa;
+    }
+    .episode-content {
+      white-space: pre-line; /* 텍스트에서 줄바꿈을 보존 */
+    }
+  </style>
+</head>
+<body>
+  <!-- 1. 네비게이션 -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top" aria-label="주 메인 내비게이션">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">하몬서클 성공스토리</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="메뉴 열기">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#story-circle">Story Circle</a></li>
+          <li class="nav-item"><a class="nav-link active" href="index.html#episodes">Episodes</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#blog">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 페이지 헤더 -->
+  <header class="bg-light py-5 mt-5">
+    <div class="container">
+      <h1 class="text-center">모든 에피소드</h1>
+    </div>
+  </header>
+
+  <!-- 에피소드 탭 섹션 -->
+  <div class="container my-5">
+    <h2 class="text-center mb-4">하몬스토리 에피소드 목록</h2>
+
+    <!-- 에피소드 선택 탭 -->
+    <ul class="nav nav-tabs" id="episodeTabs" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="ep1-tab" data-bs-toggle="tab" data-bs-target="#ep1" type="button" role="tab">에피소드 1: 창업 인사이트</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="ep2-tab" data-bs-toggle="tab" data-bs-target="#ep2" type="button" role="tab">에피소드 2: 커리어 성장</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="ep3-tab" data-bs-toggle="tab" data-bs-target="#ep3" type="button" role="tab">에피소드 3: 인생 서사</button>
+      </li>
+    </ul>
+
+    <div class="tab-content mt-3" id="episodeTabContent">
+      <!-- 에피소드 1 -->
+      <div class="tab-pane fade show active" id="ep1" role="tabpanel">
+        <input type="text" class="form-control mb-3" placeholder="에피소드 1 내용 검색..." onkeyup="filterList(this, 'ep1-list')">
+        <ul class="list-group" id="ep1-list">
+          <!-- 스크립트에서 동적으로 채워짐 -->
+        </ul>
+      </div>
+
+      <!-- 에피소드 2 -->
+      <div class="tab-pane fade" id="ep2" role="tabpanel">
+        <input type="text" class="form-control mb-3" placeholder="에피소드 2 내용 검색..." onkeyup="filterList(this, 'ep2-list')">
+        <ul class="list-group" id="ep2-list">
+          <!-- 스크립트에서 동적으로 채워짐 -->
+        </ul>
+      </div>
+
+      <!-- 에피소드 3 -->
+      <div class="tab-pane fade" id="ep3" role="tabpanel">
+        <input type="text" class="form-control mb-3" placeholder="에피소드 3 내용 검색..." onkeyup="filterList(this, 'ep3-list')">
+        <ul class="list-group" id="ep3-list">
+          <!-- 스크립트에서 동적으로 채워짐 -->
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 돌아가기 버튼 -->
+  <div class="container mb-5">
+    <div class="text-center">
+      <a href="index.html" class="btn btn-outline-primary">메인 페이지로 돌아가기</a>
+    </div>
+  </div>
+
+  <!-- 에피소드 내용 모달 -->
+  <div class="modal fade" id="episodeModal" tabindex="-1" aria-labelledby="episodeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="episodeModalLabel">에피소드 내용</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="닫기"></button>
+        </div>
+        <div class="modal-body">
+          <h4 id="modalTitle" class="mb-3"></h4>
+          <div id="modalContent" class="episode-content"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="py-4 text-center bg-dark text-white">
+    <div class="container">
+      <p>© 2025 하몬서클 성공스토리 All Rights Reserved.</p>
+      <p>
+        <a href="#" class="text-white me-3" aria-label="YouTube 링크">
+          <i class="fab fa-youtube"></i>
+        </a>
+        <a href="#" class="text-white me-3" aria-label="Instagram 링크">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="#" class="text-white" aria-label="LinkedIn 링크">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- 에피소드 데이터 -->
+  <script src="assets/js/episode-data.js"></script>
+  <!-- 커스텀 JS -->
+  <script src="assets/js/main.js"></script>
+  
+  <script>
+    // 에피소드 목록 생성
+    function populateEpisodeLists() {
+      // 에피소드 1 목록 생성
+      const ep1List = document.getElementById('ep1-list');
+      episodeData.episode1.forEach((item, index) => {
+        const li = document.createElement('li');
+        li.className = 'list-group-item';
+        li.textContent = item.title;
+        li.dataset.episode = 'episode1';
+        li.dataset.index = index;
+        li.addEventListener('click', showEpisodeContent);
+        ep1List.appendChild(li);
+      });
+
+      // 에피소드 2 목록 생성
+      const ep2List = document.getElementById('ep2-list');
+      episodeData.episode2.forEach((item, index) => {
+        const li = document.createElement('li');
+        li.className = 'list-group-item';
+        li.textContent = item.title;
+        li.dataset.episode = 'episode2';
+        li.dataset.index = index;
+        li.addEventListener('click', showEpisodeContent);
+        ep2List.appendChild(li);
+      });
+
+      // 에피소드 3 목록 생성
+      const ep3List = document.getElementById('ep3-list');
+      episodeData.episode3.forEach((item, index) => {
+        const li = document.createElement('li');
+        li.className = 'list-group-item';
+        li.textContent = item.title;
+        li.dataset.episode = 'episode3';
+        li.dataset.index = index;
+        li.addEventListener('click', showEpisodeContent);
+        ep3List.appendChild(li);
+      });
+    }
+
+    // 에피소드 내용 표시
+    function showEpisodeContent(event) {
+      const episodeId = event.currentTarget.dataset.episode;
+      const index = event.currentTarget.dataset.index;
+      const episode = episodeData[episodeId][index];
+      
+      // 모달에 내용 채우기
+      document.getElementById('modalTitle').textContent = episode.title;
+      document.getElementById('modalContent').textContent = episode.content;
+      
+      // 모달 표시
+      const modal = new bootstrap.Modal(document.getElementById('episodeModal'));
+      modal.show();
+    }
+
+    // 검색 필터링
+    function filterList(input, listId) {
+      const filter = input.value.toLowerCase();
+      const items = document.getElementById(listId).getElementsByTagName('li');
+      for (let i = 0; i < items.length; i++) {
+        const txt = items[i].textContent || items[i].innerText;
+        items[i].style.display = txt.toLowerCase().includes(filter) ? '' : 'none';
+      }
+    }
+
+    // 페이지 로드 시 에피소드 목록 생성
+    document.addEventListener('DOMContentLoaded', populateEpisodeLists);
+  </script>
+</body>
+</html> 

@@ -1,0 +1,119 @@
+/* @font-face {
+  font-family: 'ChosunGu';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGu.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+*{font-family: 'ChosunGu';}
+.mb-3{font-family: 'ChosunGu';} */
+
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+/* 1. 네비게이션 바 반투명 + 블러 + 그림자 */
+.navbar {
+  background-color: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: saturate(180%) blur(10px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 1rem 0;
+}
+
+/* 메뉴 링크 여백 확대 */
+.navbar .nav-link {
+  margin: 0 1rem;
+  font-weight: 500;
+  color: #333;
+}
+.navbar .nav-link:hover {
+  color: #0052cc;
+}
+
+/* 2. 히어로 섹션 - 밝은 배경 + 연한 흰색 오버레이 */
+#hero {
+  position: relative;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), /* 위쪽 어둡게 */ #6ca2f1 /* 아래쪽 덜 어둡게 */);
+  min-height: 100vh;
+}
+
+/* 히어로 텍스트 컨테이너 */
+#hero .container {
+  position: relative;
+  z-index: 1;
+  color: #222;
+  text-shadow: none;
+}
+
+/* 히어로 헤드카피 */
+#hero h1 {
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+/* 히어로 서브카피 */
+#hero p.lead {
+  margin-top: 0.5rem;
+  opacity: 1;
+}
+
+/* 3. CTA 버튼 스타일 강화 */
+#hero .btn-primary {
+  background-color: #ed2123;
+  border-color: #ed2123;
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  border-radius: 8px;
+  padding: 0.75rem 2rem;
+  font-size: 1.125rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+#hero .btn-primary:hover {
+  background-color: #e07b00;
+  border-color: #e07b00;
+  transform: translateY(-2px);
+}
+
+/* 4. 반응형 텍스트 크기 조정 */
+@media (max-width: 576px) {
+  #hero h1 {
+    font-size: 2.25rem;
+    line-height: 1.3;
+  }
+  #hero p.lead {
+    font-size: 1rem;
+  }
+}
+
+/* 5. 섹션 간 여백 통일 */
+section {
+  padding: 4rem 0;
+}
+
+/* 6. 푸터 높이 및 링크 스타일 */
+footer {
+  padding: 2rem 0;
+  background-color: #222;
+}
+footer a {
+  color: #fff;
+  opacity: 0.8;
+  margin: 0 0.5rem;
+  transition: opacity 0.2s;
+}
+footer a:hover {
+  opacity: 1;
+}
+.red-text {
+  color: red;
+}
+.toast-center {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1100; /* 모달보다 위에 뜨려면 충분히 큰 값으로 */
+}
